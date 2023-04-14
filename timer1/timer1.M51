@@ -1,0 +1,98 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        09/26/2020  14:50:55  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE timer1.obj TO timer1
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  timer1.obj (TIMER1)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  timer1 (TIMER1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000BH     UNIT         ?DT?TIMER1
+            IDATA   0013H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0003H     ABSOLUTE     
+            CODE    0006H     008CH     UNIT         ?C_C51STARTUP
+            CODE    0092H     0013H     UNIT         ?PR?EX_ISR?TIMER1
+            CODE    00A5H     0010H     UNIT         ?C_INITSEG
+            CODE    00B5H     000DH     UNIT         ?PR?MAIN?TIMER1
+            CODE    00C2H     0007H     UNIT         ?PR?INIT_EX?TIMER1
+
+
+
+OVERLAY MAP OF MODULE:   timer1 (TIMER1)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?TIMER1
+  +--> ?C_INITSEG
+
+?PR?MAIN?TIMER1
+  +--> ?PR?INIT_EX?TIMER1
+
+
+
+SYMBOL TABLE OF MODULE:  timer1 (TIMER1)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TIMER1
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/26/2020  14:50:55  PAGE 2
+
+
+  B:00A8H.7       PUBLIC        EA
+  C:0092H         PUBLIC        ex_isr
+  C:00B5H         PUBLIC        main
+  D:0008H         PUBLIC        seg
+  B:00A8H.0       PUBLIC        EX0
+  B:0088H.0       PUBLIC        IT0
+  D:0012H         PUBLIC        num
+  C:00C2H         PUBLIC        init_ex
+  -------         PROC          INIT_EX
+  C:00C2H         LINE#         7
+  C:00C2H         LINE#         8
+  C:00C2H         LINE#         9
+  C:00C4H         LINE#         10
+  C:00C6H         LINE#         11
+  C:00C8H         LINE#         12
+  -------         ENDPROC       INIT_EX
+  -------         PROC          MAIN
+  C:00B5H         LINE#         14
+  C:00B5H         LINE#         15
+  C:00B5H         LINE#         16
+  C:00B8H         LINE#         17
+  C:00B8H         LINE#         18
+  -------         ENDPROC       MAIN
+  -------         PROC          EX_ISR
+  C:0092H         LINE#         21
+  C:0096H         LINE#         23
+  C:0098H         LINE#         24
+  C:009DH         LINE#         25
+  C:00A0H         LINE#         26
+  -------         ENDPROC       EX_ISR
+  -------         ENDMOD        TIMER1
+
+Program Size: data=20.0 xdata=0 code=201
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

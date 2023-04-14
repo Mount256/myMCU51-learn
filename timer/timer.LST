@@ -1,0 +1,70 @@
+C51 COMPILER V9.01   TIMER                                                                 09/25/2020 20:02:50 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE TIMER
+OBJECT MODULE PLACED IN timer.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE timer.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include "reg51.h"
+   2          
+   3          unsigned char count = 0, num = 0;
+   4          unsigned char seg[]={0x3F, 0x06, 0x5B, 
+   5                                                   0x4F, 0x66, 0x6D, 
+   6                                                   0x7D, 0x07, 0x7F, 0x6F};  // seg共阴接法
+   7          void init_timer();
+   8          void display();
+   9          
+  10          void main()
+  11          {
+  12   1              init_timer();
+  13   1              while(1)
+  14   1                      display();
+  15   1      }
+  16          
+  17          void init_timer()
+  18          {
+  19   1              TMOD = 0x01; // 0000 0001
+  20   1              TH0 = (65536 - 50000) / 256; // 50ms = 50000us  256 = 2^8-->初值>>8
+  21   1              TL0 = (65536 - 50000) % 256;
+  22   1              ET0 = 1; // 开启定时器0的中断
+  23   1              EA = 1; // 开启总中断
+  24   1              TR0 = 1; // 启动定时器0
+  25   1      }
+  26          
+  27          void display()
+  28          {
+  29   1              P2 = seg[num];
+  30   1              if(num == 10)
+  31   1                      num = 0;
+  32   1      }
+  33          
+  34          //0表示外部中断0，1表示定时器中断0，2表示外部中断1，3表示 定时器中断1，4表示串口中断
+  35          void timer_isr() interrupt 1
+  36          {
+  37   1              TH0 = (65536 - 50000) / 256;
+  38   1              TL0 = (65536 - 50000) % 256;
+  39   1              count++;        
+  40   1              if(count == 20)
+  41   1              {
+  42   2                      count = 0;
+  43   2                      num++;
+  44   2              }
+  45   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     68    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     12    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+C51 COMPILER V9.01   TIMER                                                                 09/25/2020 20:02:50 PAGE 2   
+
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

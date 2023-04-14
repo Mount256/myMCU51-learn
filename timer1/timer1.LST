@@ -1,0 +1,49 @@
+C51 COMPILER V9.01   TIMER1                                                                09/26/2020 14:50:55 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE TIMER1
+OBJECT MODULE PLACED IN timer1.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE timer1.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include "reg51.h"
+   2          unsigned char num = 0;
+   3          unsigned char seg[]={0x3F, 0x06, 0x5B, 
+   4                                                   0x4F, 0x66, 0x6D, 
+   5                                                   0x7D, 0x07, 0x7F, 0x6F};  // seg共阴接法 0-9
+   6          
+   7          void init_ex()
+   8          {
+   9   1              IT0 = 1; // 外部中断0触发方式设置为边沿触发
+  10   1              EX0 = 1; // 外部中断ITNT0设置为使能中断（即允许中断）
+  11   1              EA = 1; // 允许所有中断请求
+  12   1      }
+  13          
+  14          void main()
+  15          {
+  16   1              init_ex();
+  17   1              while(1)
+  18   1                      P2 = seg[num];
+  19   1      }
+  20          
+  21          void ex_isr() interrupt 0
+  22          {
+  23   1              num++;
+  24   1              if(num == 10)
+  25   1                      num = 0;
+  26   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     39    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     11    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

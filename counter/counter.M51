@@ -1,0 +1,113 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        09/25/2020  20:46:31  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE counter.obj TO counter
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  counter.obj (COUNTER)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  counter (COUNTER)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000BH     UNIT         ?DT?COUNTER
+            IDATA   0013H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0008H     UNIT         ?PR?MAIN?COUNTER
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     008CH     UNIT         ?C_C51STARTUP
+            CODE    009AH     0011H     UNIT         ?PR?DISPLAY?COUNTER
+            CODE    00ABH     0010H     UNIT         ?PR?INIT_COUNTER?COUNTER
+            CODE    00BBH     0010H     UNIT         ?C_INITSEG
+            CODE    00CBH     0003H     UNIT         ?PR?COUNTER_ISR?COUNTER
+
+
+
+OVERLAY MAP OF MODULE:   counter (COUNTER)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?COUNTER
+  +--> ?C_INITSEG
+
+?PR?MAIN?COUNTER
+  +--> ?PR?INIT_COUNTER?COUNTER
+  +--> ?PR?DISPLAY?COUNTER
+
+
+
+SYMBOL TABLE OF MODULE:  counter (COUNTER)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        COUNTER
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/25/2020  20:46:31  PAGE 2
+
+
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  B:00A8H.7       PUBLIC        EA
+  C:00ABH         PUBLIC        init_counter
+  C:0003H         PUBLIC        main
+  C:00CBH         PUBLIC        counter_isr
+  D:0089H         PUBLIC        TMOD
+  D:0008H         PUBLIC        seg
+  B:00A8H.1       PUBLIC        ET0
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  D:0012H         PUBLIC        num
+  B:0088H.4       PUBLIC        TR0
+  C:009AH         PUBLIC        display
+  -------         PROC          MAIN
+  C:0003H         LINE#         9
+  C:0003H         LINE#         10
+  C:0003H         LINE#         11
+  C:0006H         LINE#         12
+  C:0006H         LINE#         13
+  -------         ENDPROC       MAIN
+  -------         PROC          INIT_COUNTER
+  C:00ABH         LINE#         16
+  C:00ABH         LINE#         17
+  C:00ABH         LINE#         18
+  C:00AEH         LINE#         19
+  C:00B1H         LINE#         20
+  C:00B4H         LINE#         21
+  C:00B6H         LINE#         22
+  C:00B8H         LINE#         23
+  C:00BAH         LINE#         24
+  -------         ENDPROC       INIT_COUNTER
+  -------         PROC          DISPLAY
+  C:009AH         LINE#         26
+  C:009AH         LINE#         27
+  C:009AH         LINE#         28
+  C:00A2H         LINE#         29
+  C:00A7H         LINE#         30
+  C:00AAH         LINE#         31
+  -------         ENDPROC       DISPLAY
+  -------         PROC          COUNTER_ISR
+  C:00CBH         LINE#         34
+  C:00CBH         LINE#         36
+  C:00CDH         LINE#         37
+  -------         ENDPROC       COUNTER_ISR
+  -------         ENDMOD        COUNTER
+
+Program Size: data=20.0 xdata=0 code=206
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

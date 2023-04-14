@@ -1,0 +1,190 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        10/23/2020  19:42:05  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\PROGRAM FILES\KEIL\C51\BIN\BL51.EXE multiseg.obj TO multiseg
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  multiseg.obj (MULTISEG)
+  C:\PROGRAM FILES\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\PROGRAM FILES\KEIL\C51\LIB\C51S.LIB (?C?UIDIV)
+  C:\PROGRAM FILES\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  multiseg (MULTISEG)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0011H     UNIT         ?DT?MULTISEG
+            DATA    0019H     0001H     UNIT         _DATA_GROUP_
+            IDATA   001AH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     008CH     UNIT         ?C_C51STARTUP
+            CODE    009AH     006EH     UNIT         ?PR?MAIN?MULTISEG
+            CODE    0108H     0055H     UNIT         ?C?LIB_CODE
+            CODE    015DH     0021H     UNIT         ?PR?TIMER_ISR?MULTISEG
+            CODE    017EH     0020H     UNIT         ?PR?_DELAY?MULTISEG
+            CODE    019EH     001DH     UNIT         ?PR?_DISPLAY?MULTISEG
+            CODE    01BBH     001AH     UNIT         ?C_INITSEG
+            CODE    01D5H     0010H     UNIT         ?PR?INIT_TIMER?MULTISEG
+            CODE    01E5H     000FH     UNIT         ?PR?INIT_SEG?MULTISEG
+
+
+
+OVERLAY MAP OF MODULE:   multiseg (MULTISEG)
+
+
+SEGMENT                           DATA_GROUP 
+  +--> CALLED SEGMENT           START    LENGTH
+-----------------------------------------------
+?C_C51STARTUP                   -----    -----
+  +--> ?PR?MAIN?MULTISEG
+  +--> ?C_INITSEG
+
+?PR?MAIN?MULTISEG               0019H    0001H
+  +--> ?PR?INIT_SEG?MULTISEG
+  +--> ?PR?INIT_TIMER?MULTISEG
+  +--> ?PR?_DISPLAY?MULTISEG
+
+?PR?_DISPLAY?MULTISEG           -----    -----
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/23/2020  19:42:05  PAGE 2
+
+
+  +--> ?PR?_DELAY?MULTISEG
+
+
+
+SYMBOL TABLE OF MODULE:  multiseg (MULTISEG)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MULTISEG
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:00A0H         PUBLIC        P2
+  B:00A8H.7       PUBLIC        EA
+  C:017EH         PUBLIC        _delay
+  D:0008H         PUBLIC        order
+  C:009AH         PUBLIC        main
+  B:00A0H.6       PUBLIC        dula
+  B:00A0H.7       PUBLIC        wela
+  D:000CH         PUBLIC        count
+  D:0089H         PUBLIC        TMOD
+  C:01D5H         PUBLIC        init_timer
+  D:000DH         PUBLIC        seg
+  B:00A8H.1       PUBLIC        ET0
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  D:0017H         PUBLIC        num
+  C:015DH         PUBLIC        timer_isr
+  B:0088H.4       PUBLIC        TR0
+  C:01E5H         PUBLIC        init_seg
+  C:019EH         PUBLIC        _display
+  -------         PROC          MAIN
+  -------         DO            
+  D:0019H         SYMBOL        i
+  -------         ENDDO         
+  C:009AH         LINE#         19
+  C:009AH         LINE#         20
+  C:009AH         LINE#         21
+  C:009DH         LINE#         22
+  C:00A0H         LINE#         23
+  C:00A3H         LINE#         24
+  C:00A3H         LINE#         25
+  C:00A3H         LINE#         26
+  C:00B3H         LINE#         27
+  C:00CCH         LINE#         28
+  C:00E5H         LINE#         29
+  C:00F7H         LINE#         30
+  C:0101H         LINE#         31
+  C:0106H         LINE#         32
+  -------         ENDPROC       MAIN
+  -------         PROC          INIT_SEG
+  C:01E5H         LINE#         35
+  C:01E5H         LINE#         36
+  C:01E5H         LINE#         37
+  C:01E7H         LINE#         38
+  C:01EAH         LINE#         39
+  C:01ECH         LINE#         41
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/23/2020  19:42:05  PAGE 3
+
+
+  C:01EEH         LINE#         42
+  C:01F1H         LINE#         43
+  C:01F3H         LINE#         44
+  -------         ENDPROC       INIT_SEG
+  -------         PROC          INIT_TIMER
+  C:01D5H         LINE#         47
+  C:01D5H         LINE#         48
+  C:01D5H         LINE#         49
+  C:01D7H         LINE#         50
+  C:01D9H         LINE#         51
+  C:01DCH         LINE#         52
+  C:01DFH         LINE#         53
+  C:01E2H         LINE#         54
+  C:01E4H         LINE#         55
+  -------         ENDPROC       INIT_TIMER
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        n
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:017EH         LINE#         58
+  C:017EH         LINE#         59
+  C:017EH         LINE#         60
+  C:0181H         LINE#         61
+  C:0188H         LINE#         62
+  C:019DH         LINE#         63
+  -------         ENDPROC       _DELAY
+  -------         PROC          _DISPLAY
+  D:0007H         SYMBOL        n
+  D:0005H         SYMBOL        i
+  C:019EH         LINE#         66
+  C:019EH         LINE#         67
+  C:019EH         LINE#         69
+  C:019EH         LINE#         70
+  C:01A0H         LINE#         71
+  C:01A7H         LINE#         72
+  C:01A9H         LINE#         73
+  C:01ABH         LINE#         74
+  C:01B2H         LINE#         75
+  C:01B4H         LINE#         76
+  C:01B4H         LINE#         77
+  -------         ENDPROC       _DISPLAY
+  -------         PROC          TIMER_ISR
+  C:015DH         LINE#         81
+  C:0161H         LINE#         83
+  C:0164H         LINE#         84
+  C:0167H         LINE#         85
+  C:0169H         LINE#         86
+  C:016EH         LINE#         87
+  C:016EH         LINE#         88
+  C:0176H         LINE#         89
+  C:0179H         LINE#         90
+  C:0179H         LINE#         91
+  -------         ENDPROC       TIMER_ISR
+  -------         ENDMOD        MULTISEG
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/23/2020  19:42:05  PAGE 4
+
+
+  -------         MODULE        ?C?UIDIV
+  C:0108H         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+Program Size: data=27.0 xdata=0 code=492
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
